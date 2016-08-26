@@ -130,16 +130,19 @@ func main_load(args []string) {
 		}
 
 		// check for BLE library compliance
+		PrintlnVerbose("Verifying BLE version:", ble_compliance_string)
 		found := searchBLEversionInDFU(tmpfile.Name(), ble_compliance_string)
 
 		// remove the temporary file
 		os.Remove(tmpfile.Name())
 
 		if !found {
-			fmt.Println("BLE firmware version is not in sync with CurieBLE library")
-			fmt.Println("Update it using \"Burn Bootloader\" menu")
+			fmt.Println("!! BLE firmware version is not in sync with CurieBLE library !!")
+                        fmt.Println("* Set Programmer to \"Arduino/Genuino 101 Firmware Updater\"")
+			fmt.Println("* Update it using \"Burn Bootloader\" menu")
 			os.Exit(1)
 		}
+		PrintlnVerbose("BLE version: verified")
 
 	}
 
