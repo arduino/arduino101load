@@ -14,6 +14,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/arduino/arduino101load/globals"
 	shellwords "github.com/mattn/go-shellwords"
 )
 
@@ -33,8 +34,6 @@ var (
 	rtos_compliance_string = flag.String("rtos_fw_str", "", "RTOS FW ID string")
 	rtos_compliance_offset = flag.Int("rtos_fw_pos", 0, "RTOS FW ID offset")
 )
-
-const Version = "2.2.2"
 
 const dfu_flags = "-d,8087:0ABA"
 const rtos_firmware = "quark.bin"
@@ -205,7 +204,7 @@ func main_load() {
 	firmwarePath = filepath.Join(filepath.Dir(firmwarePath), "firmwares")
 
 	if stat, err := os.Stat(*core); err == nil && stat.IsDir() {
-    	firmwarePath = *core
+		firmwarePath = *core
 	} else {
 		firmwarePath = filepath.Join(firmwarePath, *core)
 	}
@@ -311,7 +310,7 @@ func main() {
 
 	flag.Parse()
 
-	PrintlnVerbose(name + " " + Version + " - compiled with " + runtime.Version())
+	PrintlnVerbose(globals.VersionInfo)
 
 	if *copier {
 		if *from == "" || *to == "" {

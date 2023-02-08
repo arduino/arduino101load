@@ -1,4 +1,5 @@
 # arduino101load
+[![Release status](https://github.com/arduino/arduino101load/actions/workflows/release-go-crosscompile-task.yml/badge.svg)](https://github.com/arduino/arduino101load/actions/workflows/release-go-crosscompile-task.yml)
 multiplatform launcher for Arduino101 dfu-util flashing utility
 
 ## Compiling
