@@ -23,7 +23,7 @@ jobs:
 
     strategy:
       matrix:
-        os:
+        task:
           - Windows_32bit
           - Windows_64bit
           - Linux_32bit
@@ -42,7 +42,7 @@ jobs:
 
       - name: Create changelog
         # Avoid creating the same changelog for each os
-        if: matrix.os == 'Windows_32bit'
+        if: matrix.task == 'Windows_32bit'
         uses: arduino/create-changelog@v1
         with:
           tag-regex: '^[0-9]+\.[0-9]+\.[0-9]+.*$'
@@ -62,7 +62,7 @@ jobs:
           version: 3.x
 
       - name: Build
-        run: task dist:${{ matrix.os }}
+        run: task dist:${{ matrix.task }}
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
