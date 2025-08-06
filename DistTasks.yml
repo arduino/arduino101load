@@ -29,7 +29,7 @@ tasks:
         go build -o {{.DIST_DIR}}/bin/{{.PROJECT_NAME}}.exe {{.LDFLAGS}}
         cd {{.DIST_DIR}}
         cp -R ../firmwares bin/
-        zip {{.PACKAGE_NAME}} bin/{{.PROJECT_NAME}}.exe bin/firmwares
+        zip -r {{.PACKAGE_NAME}} bin/{{.PROJECT_NAME}}.exe bin/firmwares
     vars:
       PACKAGE_PLATFORM: "Windows_32bit"
       PACKAGE_NAME: "{{.PROJECT_NAME}}_{{.VERSION}}_{{.PACKAGE_PLATFORM}}.zip"
@@ -44,7 +44,7 @@ tasks:
         go build -o {{.DIST_DIR}}/bin/{{.PROJECT_NAME}}.exe {{.LDFLAGS}}
         cd {{.DIST_DIR}}
         cp -R ../firmwares bin/
-        zip {{.PACKAGE_NAME}} bin/{{.PROJECT_NAME}}.exe bin/firmwares
+        zip -r {{.PACKAGE_NAME}} bin/{{.PROJECT_NAME}}.exe bin/firmwares
     vars:
       PACKAGE_PLATFORM: "Windows_64bit"
       PACKAGE_NAME: "{{.PROJECT_NAME}}_{{.VERSION}}_{{.PACKAGE_PLATFORM}}.zip"
